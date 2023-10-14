@@ -21,22 +21,12 @@ def rec():
     MakeUserFile()
 
 
-@app.route('/api/get_user_input/<int:trueLine>', methods=['GET'])      #type out {numbers}/api/get_user_input
-def hello(trueLine):
+@app.route('/api/get_user_input/<trueLine>', methods=['GET'])      #type out {numbers}/api/get_user_input
+def hello(trueLine):                                                    #pass in the parameter with "_"
     answer = GetUserInput(trueLine)
-    return jsonify({'message': answer})
+ #   return jsonify({'message': answer})
+    return "hi i'n awnioafwnjouiuog"
 
-
-"""def chatGptResponse(question):
-    response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
-            messages=[
-                {"role": "system", "content": "You are a helpful assistant."},
-                {"role": "user", "content": question},
-            ]
-        )
-    return response['choices'][0]['message']['content']
-    """
 
 if __name__ == "__main__":
     app.run()

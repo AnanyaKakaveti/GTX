@@ -1,4 +1,6 @@
+import keyboard
 from google.cloud import speech
+
 import pyaudio
 import wave
 import os
@@ -26,9 +28,15 @@ def MakeUserFile():
     frames = []
 
     # Record audio
-    for _ in range(0, int(RATE / 1024 * RECORD_SECONDS)):
+
+    while(not keyboard.is_pressed(' ')):
         data = stream.read(1024)
         frames.append(data)
+
+
+# for _ in range(0, int(RATE / 1024 * RECORD_SECONDS)):
+#        data = stream.read(1024)
+#        frames.append(data)
 
     print("Finished recording")
 
@@ -52,6 +60,7 @@ def MakeUserFile():
 def GetUserInput(trueLine):             #be sure this file is download as input.mp3
 
     client = speech.SpeechClient.from_service_account_json('key.json')
+
     MakeUserFile()
 
     fileName = "Input.mp3"
@@ -68,7 +77,7 @@ def GetUserInput(trueLine):             #be sure this file is download as input.
     response = client.recognize(config=config, audio=audio_file)
     userSays = response.results[0].alternatives[0].transcript
     print(userSays)
-    wordsInResponse = userSays.split()
+    wordsInResponse = userSays.split("_")
     wordsInTrue = trueLine.split()
     percentage = GetPercentage(wordsInResponse, wordsInTrue)
     print(f"you got {percentage}% correct!!!")
