@@ -5,7 +5,14 @@ import './App.css';
 import Home from "./pages/Home";
 import Play from "./pages/Play";
 
+
 function App() {
+  const presetPoints = [
+    { start: 10, end: 20 },
+    { start: 30, end: 40 },
+    // Add more preset points as needed
+  ];
+
   return (
 
     <div className="App"> 

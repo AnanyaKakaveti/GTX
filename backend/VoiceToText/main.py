@@ -1,6 +1,6 @@
 from google.cloud import speech
 import os
-from gcloud import storage
+# from google.cloud import storage
 from oauth2client.service_account import ServiceAccountCredentials
 import os
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "key.json"              ###PUT YOUR MANAGER JSON IN MAIN

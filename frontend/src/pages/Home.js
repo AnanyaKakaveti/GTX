@@ -1,5 +1,13 @@
 // import logo from '../logo.svg';
+import YouTubePlayer from "../YouTubePlayer";
 import { Link } from 'react-router-dom';
+
+const presetPoints = [
+  { start: 10, end: 20 },
+  { start: 30, end: 40 },
+  // Add more preset points as needed
+];
+
 
 const Home = () => { 
 
@@ -7,6 +15,7 @@ const Home = () => {
       <div className="App">
       <header>
           <div className='App-header'>
+            <YouTubePlayer videoId='a8Rwz6zBJSE' presetPoints={presetPoints} />
             Welcome!
             <Link to="/play">
             <button>
@@ -15,6 +24,7 @@ const Home = () => {
           </Link>
           </div>
       </header>
+     
     </div>
     
     )
