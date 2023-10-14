@@ -3,7 +3,7 @@ import os
 from gcloud import storage
 from oauth2client.service_account import ServiceAccountCredentials
 import os
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "key.json"
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "key.json"              ###PUT YOUR MANAGER JSON IN MAIN
 
 client = speech.SpeechClient.from_service_account_json('key.json')
 fileName = "Input.mp3"
@@ -18,6 +18,18 @@ config = speech.RecognitionConfig(sample_rate_hertz = 44100,
                                   language_code= 'es-MX')
 
 response = client.recognize(config=config, audio=audio_file)
+
+if response.results:
+    userSays = response.results[0].alternatives[0].transcript
+    print(userSays)  # Print the transcript
+else:
+    print("No transcript found in the response")
+
+
+
+
+
+# Now you can use the userSays variable as needed
 
 print(response)
 # https://speech.googleapis.com/v1p1beta1/speech:recognize
