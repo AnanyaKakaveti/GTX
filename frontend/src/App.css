@@ -14,14 +14,21 @@
 }
 
 .App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(40px + 2vmin);
   color: white;
+  font-weight: 4;
+}
+
+.gradient-background {
+  background: linear-gradient(135deg, #ff8700, #ff8ce2);
+  /* background: linear-gradient(135deg, #ff8700, #ff8cb9); */
+  height: 100vh;
+  width: 100vw;
 }
 
 .App-link {
