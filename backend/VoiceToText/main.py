@@ -10,9 +10,8 @@ app = Flask(__name__)
 #@app.route('/api', methods=['GET'])
 #def hello1():
 #    return jsonify({'message': 'Hello, this is your REST API!'})
-print(GetUserInput())
 
-@app.route('', methods=['GET'])
+@app.route('/', methods=['GET'])
 def landing():
     return jsonify({'message': "Hello! the commands we have are!"})
 

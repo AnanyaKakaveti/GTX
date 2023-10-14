@@ -50,9 +50,10 @@ def MakeUserFile():
 
 
 def GetUserInput(trueLine):             #be sure this file is download as input.mp3
-       ##REPLACE SENTANCE IN THE ACTUAL PROGRAM##
 
     client = speech.SpeechClient.from_service_account_json('key.json')
+    MakeUserFile()
+
     fileName = "Input.mp3"
 
     with open(fileName, 'rb') as f:
@@ -87,7 +88,7 @@ def GetPercentage(wordsInResponse, wordsInTrue):
     for j in range(len(wordsInResponse)):
         if(wordsInTrue[i] == wordsInResponse[j]):
             correct += 1
-        elif(wordsInTrue[i + 1] == wordsInResponse[j]):
+        elif(i != len(wordsInTrue) - 1 and wordsInTrue[i + 1] == wordsInResponse[j]):
              i += 1
         elif(wordsInTrue[i -1] == wordsInResponse[j]):
              i -=1
@@ -103,11 +104,12 @@ def GetPercentage(wordsInResponse, wordsInTrue):
 #GetUserInput("yes")
 
 trueLine = "suerte que en el sur hayas nacido"
-developerResp = input("Record(1) or Test(2)?")
+
+"""
+developerResp = int(input("Record(1) or Test(2)?"))
 if(developerResp == 1):
+    print("c")
     MakeUserFile()
 elif(developerResp == 2):
-    MakeUserFile()
-GetUserInput(trueLine)
-
-
+    GetUserInput(trueLine)
+"""
