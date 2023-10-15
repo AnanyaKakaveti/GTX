@@ -1,7 +1,18 @@
 
 from flask import Flask, jsonify, request, send_file
+from flask_behind_proxy import FlaskBehindProxy
 from InputAndCompare import *
+
+
 app = Flask(__name__)
+proxied = FlaskBehindProxy(app)
+
+app.config['SECRET_KEY'] = '626423b656a4f6851a5cbece30f78108'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
+
+class Todo(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    content = db.Column(db.String)
 
 
 # Replace 'YOUR_API_KEY' with your actual API key
@@ -22,23 +33,12 @@ def landing():
 def rec():
     MakeUserFile()
 
-
-@app.route('/api/get_user_input/<int:trueLine>', methods=['GET'])      #type out {numbers}/api/get_user_input
+@app.route('/api/get_user_input', methods=['GET'])
 def hello(trueLine):
-    answer = GetUserInput(trueLine)
-    return jsonify({'message': answer})
-
-
-"""def chatGptResponse(question):
-    response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
-            messages=[
-                {"role": "system", "content": "You are a helpful assistant."},
-                {"role": "user", "content": question},
-            ]
-        )
-    return response['choices'][0]['message']['content']
-    """
+    if request.method == 'GET':
+        trueLine = request.get('data')
+        answer = GetUserInput(trueLine)
+        return jsonify({'message': answer})
 
 if __name__ == "__main__":
     app.run()
