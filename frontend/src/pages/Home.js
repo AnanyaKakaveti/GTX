@@ -11,7 +11,7 @@ const Home = () => {
       <header>
           <div className='App-header'>
             <div className='first-line'>Learning language through music</div>
-            <div className="center">Welcome to Cantar! <br></br></div>
+            <div className="center">Welcome to Songlation! <br></br></div>
             <div className='selection'>Select your language:</div>
             {/* Select your language: */}
             {/* <Link to="/play"> */}

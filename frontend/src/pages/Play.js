@@ -113,6 +113,8 @@ const Play = () => {
             Play The Song!
             <YouTubePlayer videoId='a8Rwz6zBJSE' presetPoints={presetPoints} /> 
         </div>
+
+        <div className='selection'>Listen to the lyrics, practice on your own and record! Stop recording by hitting the spacebar.</div>
             
 
             <div className="lyric">
