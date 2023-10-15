@@ -10,9 +10,9 @@ proxied = FlaskBehindProxy(app)
 app.config['SECRET_KEY'] = '626423b656a4f6851a5cbece30f78108'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 
-class Todo(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    content = db.Column(db.String)
+# class Todo(db.Model):
+#     id = db.Column(db.Integer, primary_key=True)
+#     content = db.Column(db.String)
 
 
 # Replace 'YOUR_API_KEY' with your actual API key
