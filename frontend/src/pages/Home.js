@@ -10,7 +10,7 @@ const Home = () => {
       <header>
           <div className='App-header'>
             <div className='first-line'>Learning language through music</div>
-            Welcome to Cantar! <br></br>
+            <div className="center">Welcome to Cantar! <br></br></div>
             <div className='selection'>Select your language:</div>
             {/* Select your language: */}
             {/* <Link to="/play"> */}
