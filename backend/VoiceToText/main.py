@@ -1,11 +1,11 @@
 
-from flask import Flask, jsonify, request, send_file
-from flask_behind_proxy import FlaskBehindProxy
+from flask import Flask, jsonify, request, send_file, Response
+#from flask_behind_proxy import FlaskBehindProxy
 from InputAndCompare import *
 
 
 app = Flask(__name__)
-proxied = FlaskBehindProxy(app)
+#proxied = FlaskBehindProxy(app)
 
 app.config['SECRET_KEY'] = '626423b656a4f6851a5cbece30f78108'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
@@ -31,6 +31,12 @@ def hello(trueLine):
     answer = GetUserInput(trueLine)
     print(f"trueLine: {trueLine}")
     return jsonify({'message': answer})
+
+
+
+@app.route('/video_feed')
+def video_feed():
+    return Response(DisplayThroughCV(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
 if __name__ == "__main__": 

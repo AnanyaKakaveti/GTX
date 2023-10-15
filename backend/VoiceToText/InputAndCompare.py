@@ -1,6 +1,6 @@
 import keyboard
 from google.cloud import speech
-
+import cv2
 import pyaudio
 import wave
 import os
@@ -110,6 +110,16 @@ def GetPercentage(wordsInResponse, wordsInTrue):
 
     return (correct / len(wordsInTrue)) * 100
 
+def DisplayThroughCV():
+    video = cv2.VideoCapture("shak.mp4")
+    while(True):
+        ret, frame = video.read()
+        if not ret:
+            break
+        else:
+            ret, buffer = cv2.imencode('.jpeg',frame)
+            frame = buffer.tobytes()
+            yield (b'--frame\r\n' b'Content-type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
 
 #GetUserInput("yes")
