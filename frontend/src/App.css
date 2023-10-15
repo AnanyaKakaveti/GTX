@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
 }
 
 .App-logo {
@@ -12,23 +12,91 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+ 
 .App-header {
-  min-height: 100vh;
+  /* min-height: 100vh; */
+  padding-top: calc(30px + 4vmin);
+  margin-inline: 10%;
+  display: flex;
+  flex-direction: column;
+  font-size: calc(30px + 4vmin);
+  color: white;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.first-line{
+  /* min-height: 100vh; */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(40px + 2vmin);
   color: white;
-  font-weight: 4;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-style: oblique;
+  font-size: xx-large;
+  font-weight: 100;
 }
+
+.selection{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(40px + 2vmin);
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: x-large;
+  font-weight: 100;
+  padding-top: 15px;
+}
+
+.button-line{
+  display: flex;
+  flex-direction: row;
+  /* align-items: center; */
+  justify-content: space-between;
+  font-size: calc(40px + 2vmin);
+  color: white;
+  font-weight: 4;
+  padding-top: 10px;
+}
+
+/* .rectangle{
+  display: inline-block;
+  width: 100%;
+  height: 200px;
+  background-image: url("./data/background.png");
+  background-size: cover;
+  background-position: center;
+} */
+
+span{
+  width: 100px;
+}
+
+.center {
+  align-self: center;
+  display: flex;
+  justify-content: center;
+} 
 
 .gradient-background {
   background: linear-gradient(135deg, #ff8700, #ff8ce2);
   /* background: linear-gradient(135deg, #ff8700, #ff8cb9); */
   height: 100vh;
   width: 100vw;
+}
+
+.lyric {
+  color: white;
+  font-weight: 400;
+  font-family: contemporary;
+  margin-top: 15px;
+  white-space: pre-wrap;
+  text-align: center;
+  height: 150px;
+  font-size: calc(10px + 7vmin);
 }
 
 .App-link {
@@ -42,4 +110,88 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.right {
+  align-self: right;
+  display: flex;
+  justify-content: right;
+}
+
+/* CSS */
+.button-36 {
+  /* background-image: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%); */
+  background-image: linear-gradient(135deg, #000000 10%, #120c35 45%, #200d53 70%);
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  flex-shrink: 0;
+  font-family: "Inter UI","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  width: 200px;
+  height: 4rem;
+  padding: 0 1.6rem;
+  text-align: center;
+  text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+  transition: all .5s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-36:hover {
+  box-shadow: rgba(255, 255, 255, 0.5) 0 1px 30px;
+  transition-duration: .1s;
+}
+
+@media (min-width: 768px) {
+  .button-36 {
+    padding: 0 2.6rem;
+  }
+}
+
+/* CSS */
+.button-27 {
+  appearance: none;
+  background-color: #000000;
+  border: 2px solid #1A1A1A;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  min-height: 60px;
+  min-width: 0;
+  outline: none;
+  padding: 16px 24px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100%;
+  will-change: transform;
+}
+
+.button-27:disabled {
+  pointer-events: none;
+}
+
+.button-27:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.button-27:active {
+  box-shadow: none;
+  transform: translateY(0);
 }

@@ -15,15 +15,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 #     content = db.Column(db.String)
 
 
-# Replace 'YOUR_API_KEY' with your actual API key
-# api_key = 'YOUR_API_KEY'
-
-
-
-#@app.route('/api', methods=['GET'])
-#def hello1():
-#    return jsonify({'message': 'Hello, this is your REST API!'})
-
 @app.route('/', methods=['GET'])
 def landing():
     return jsonify({'message': "Hello! the commands we have are!"})
@@ -33,12 +24,15 @@ def landing():
 def rec():
     MakeUserFile()
 
-@app.route('/api/get_user_input', methods=['GET'])
-def hello(trueLine):
-    if request.method == 'GET':
-        trueLine = request.get('data')
-        answer = GetUserInput(trueLine)
-        return jsonify({'message': answer})
 
-if __name__ == "__main__":
+@app.route('/api/get_user_input/<trueLine>', methods=['GET'])  
+def hello(trueLine):      
+    #type out {numbers}/api/get_user_input
+    answer = GetUserInput(trueLine)
+    print(f"trueLine: {trueLine}")
+    return jsonify({'message': answer})
+
+
+if __name__ == "__main__": 
+    #app.run(host = '127.0.0.1', port = 5000)
     app.run()

@@ -1,4 +1,6 @@
+import keyboard
 from google.cloud import speech
+
 import pyaudio
 import wave
 import os
@@ -26,9 +28,15 @@ def MakeUserFile():
     frames = []
 
     # Record audio
-    for _ in range(0, int(RATE / 1024 * RECORD_SECONDS)):
+
+    while(not keyboard.is_pressed(' ')):
         data = stream.read(1024)
         frames.append(data)
+
+
+# for _ in range(0, int(RATE / 1024 * RECORD_SECONDS)):
+#        data = stream.read(1024)
+#        frames.append(data)
 
     print("Finished recording")
 
@@ -52,6 +60,7 @@ def MakeUserFile():
 def GetUserInput(trueLine):             #be sure this file is download as input.mp3
 
     client = speech.SpeechClient.from_service_account_json('key.json')
+
     MakeUserFile()
 
     fileName = "Input.mp3"
@@ -85,6 +94,8 @@ def GetUserInput(trueLine):             #be sure this file is download as input.
 def GetPercentage(wordsInResponse, wordsInTrue):
     correct = 0
     i = 0
+    print(wordsInResponse)
+    print(wordsInTrue)
     for j in range(len(wordsInResponse)):
         if(wordsInTrue[i] == wordsInResponse[j]):
             correct += 1
@@ -103,7 +114,7 @@ def GetPercentage(wordsInResponse, wordsInTrue):
 
 #GetUserInput("yes")
 
-trueLine = "suerte que en el sur hayas nacido"
+# trueLine = "suerte que en el sur hayas nacido"
 
 """
 developerResp = int(input("Record(1) or Test(2)?"))
