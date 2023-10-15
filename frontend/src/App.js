@@ -8,7 +8,7 @@ import Play from "./pages/Play";
 function App() {
   return (
 
-    <div className="App"> 
+    <div className="gradient-background"> 
       <div className="gradient-background">
         <BrowserRouter>
         {/* <Nav/> */}
