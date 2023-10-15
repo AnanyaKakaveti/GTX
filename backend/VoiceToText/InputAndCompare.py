@@ -77,7 +77,7 @@ def GetUserInput(trueLine):             #be sure this file is download as input.
     response = client.recognize(config=config, audio=audio_file)
     userSays = response.results[0].alternatives[0].transcript
     print(userSays)
-    wordsInResponse = userSays.split("_")
+    wordsInResponse = userSays.split()
     wordsInTrue = trueLine.split()
     percentage = GetPercentage(wordsInResponse, wordsInTrue)
     print(f"you got {percentage}% correct!!!")
@@ -94,6 +94,8 @@ def GetUserInput(trueLine):             #be sure this file is download as input.
 def GetPercentage(wordsInResponse, wordsInTrue):
     correct = 0
     i = 0
+    print(wordsInResponse)
+    print(wordsInTrue)
     for j in range(len(wordsInResponse)):
         if(wordsInTrue[i] == wordsInResponse[j]):
             correct += 1
@@ -112,7 +114,7 @@ def GetPercentage(wordsInResponse, wordsInTrue):
 
 #GetUserInput("yes")
 
-trueLine = "suerte que en el sur hayas nacido"
+# trueLine = "suerte que en el sur hayas nacido"
 
 """
 developerResp = int(input("Record(1) or Test(2)?"))

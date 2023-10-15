@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import {useState, useEffect, useRef} from 'react';
 import raw from '../data/suerte.txt';
+import axios from 'axios';
 
 const Play = () => { 
 
@@ -32,10 +33,34 @@ const Play = () => {
         console.log(counter);
     }
 
+    const [response, setResponse] = useState([]);
+
+    const submit = () => {
+        
+        var url = 'http://127.0.0.1:5000/api/get_user_input/Hola';
+        console.log("submitting ", url);  
+        axios.get(url)
+            .then((res) => {
+                setResponse(res.data.message);
+                console.log(response);
+            })
+            .catch((error) => {
+                console.error(error); 
+            });
+
+        
+    };
+
+    
+
+
     return (
     <div className="App">
         <button style={{width: 125}}>
             Home Page
+        </button>
+        <button style={{width: 125}} onClick={submit}>
+            Make post request
         </button>
       <header className="App-header">
         

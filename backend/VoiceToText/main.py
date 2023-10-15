@@ -1,15 +1,7 @@
 from flask import Flask, jsonify, request, send_file
 from InputAndCompare import *
+
 app = Flask(__name__)
-
-# Replace 'YOUR_API_KEY' with your actual API key
-# api_key = 'YOUR_API_KEY'
-
-
-
-#@app.route('/api', methods=['GET'])
-#def hello1():
-#    return jsonify({'message': 'Hello, this is your REST API!'})
 
 @app.route('/', methods=['GET'])
 def landing():
@@ -20,13 +12,14 @@ def landing():
 def rec():
     MakeUserFile()
 
-
-@app.route('/api/get_user_input/<trueLine>', methods=['GET'])      #type out {numbers}/api/get_user_input
-def hello(trueLine):                                                    #pass in the parameter with "_"
+@app.route('/api/get_user_input/<trueLine>', methods=['GET'])  
+def hello(trueLine):      
+    #type out {numbers}/api/get_user_input
     answer = GetUserInput(trueLine)
- #   return jsonify({'message': answer})
-    return "hi i'n awnioafwnjouiuog"
+    print(f"trueLine: {trueLine}")
+    return jsonify({'message': answer})
 
 
-if __name__ == "__main__":
+if __name__ == "__main__": 
+    #app.run(host = '127.0.0.1', port = 5000)
     app.run()
