@@ -20,7 +20,9 @@ const Play = () => {
     // const counter = useRef(0);
     const [counter, setCounter] = useState(0);
     const [response, setResponse] = useState([]);
-    const [grade, setGrade] = useState("Record yourself to see your grade!");
+    const [grade, setGrade] = useState("Record yourself to see how you did!");
+    const [continueDisabled, setContinueDisabled] = useState(false);
+    const [start, setStart] = useState(true);
 
     useEffect(() => {
         fetch(raw)
@@ -41,8 +43,14 @@ const Play = () => {
         });
     }, [])
 
+    useEffect (() => {
+        messageGrade();
+    }, [response]);
+
     async function changeLyric() {
-        setGrade("Record yourself to see your grade!");
+        setContinueDisabled(true);
+        setStart(false);
+        setGrade("Record yourself to see how you did!");
         incrementCounter();
         setLyric(allLyrics.split('\n')[counter] + "\n" + allLyrics.split('\n')[counter + 1]);
         setLyricE(allLyricsE.split('\n')[counter] + "\n" + allLyricsE.split('\n')[counter + 1]);
@@ -62,11 +70,12 @@ const Play = () => {
             .then((res) => {
                 setResponse(res.data.message);
                 console.log(response);
-                messageGrade();  
+                 
             })
             .catch((error) => {
                 console.error(error); 
             });
+
           
     };
 
@@ -82,26 +91,22 @@ const Play = () => {
             setGrade("Nice going! Keep practicing to get better!");
         }
         else if (response < 40) {
-            setGrade("Your pronunciation could be better!");
+            setGrade("Your pronunciation was a bit off. Try again!");
         }
         else {
             setGrade("didn't work");
         }
-    }
 
-    
+        if (response >= 40) {
+            setContinueDisabled(true);
+        }
+    }
 
 
     return (
     <div className="App">
-        <Link to="/">
-        <button style={{width: 125}}>
-            Home Page
-        </button>
-        </Link>
-        <button style={{width: 125}} onClick={submit}>
-            Make post request
-        </button>
+        
+        
       <header className="App-header">
         
         <div className="center">
@@ -115,10 +120,15 @@ const Play = () => {
                 <div>--------------------</div>
                 <div>{lyricE}</div>
             </div>
+            <div className="recordHolder">
+                <div className="record" id="recButton"></div>
+                <button className="recordButton" onClick={submit}>Record</button>
+            </div>
+            
             <div className="grade">{grade}</div>
             {/* <button className="lyric" onClick={messageGrade}>Submit</button> */}
             <div className= "right">
-                <button className= "button-36" onClick={changeLyric}>Next Lyric</button>
+                <button disabled={continueDisabled} className= "button-27" onClick={changeLyric}>{start ? "Start Singing" : "Next Lyric"}</button>
                 {/* <button class="button-36" role="button">Button 36</button> */}
             </div>
       </header>

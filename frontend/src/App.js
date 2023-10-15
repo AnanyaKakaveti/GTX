@@ -1,9 +1,10 @@
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {BrowserRouter, Route, Routes, Link} from "react-router-dom";
 
 
 import './App.css';
 import Home from "./pages/Home";
 import Play from "./pages/Play";
+import Navbar from "./Navbar";
 
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
     <div className="gradient-background"> 
       <div className="gradient-background">
         <BrowserRouter>
-        {/* <Nav/> */}
+        <Navbar/>
           <Routes>
               <Route path="/" element={<Home/>} />
               <Route path="/play" element={<Play/>} />
