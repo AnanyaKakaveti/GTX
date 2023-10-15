@@ -84,8 +84,9 @@ span{
 .gradient-background {
   background: linear-gradient(135deg, #ff8700, #ff8ce2);
   /* background: linear-gradient(135deg, #ff8700, #ff8cb9); */
-  height: 100vh;
+  height: 100%;
   width: 100vw;
+  padding-bottom: 100px;
 }
 
 .lyric {
@@ -95,8 +96,20 @@ span{
   margin-top: 15px;
   white-space: pre-wrap;
   text-align: center;
+  flex-direction: column;
   height: 150px;
-  font-size: calc(10px + 7vmin);
+  font-size: calc(10px + 4vmin);
+}
+
+.grade {
+  color: white;
+  font-weight: 200;
+  font-family: contemporary;
+  margin-top: calc(40px + 5vmin);
+  white-space: pre-wrap;
+  text-align: center;
+  height: 150px;
+  font-size: calc(10px + 3vmin);
 }
 
 .App-link {

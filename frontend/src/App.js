@@ -15,7 +15,7 @@ function App() {
 
   return (
 
-    <div className="App"> 
+    <div className="gradient-background"> 
       <div className="gradient-background">
         <BrowserRouter>
         {/* <Nav/> */}

@@ -1,19 +1,11 @@
 
 from flask import Flask, jsonify, request, send_file
-from flask_behind_proxy import FlaskBehindProxy
 from InputAndCompare import *
+from flask_cors import CORS
 
 
 app = Flask(__name__)
-proxied = FlaskBehindProxy(app)
-
-app.config['SECRET_KEY'] = '626423b656a4f6851a5cbece30f78108'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
-
-# class Todo(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     content = db.Column(db.String)
-
+CORS(app)  # Enable CORS for your app
 
 @app.route('/', methods=['GET'])
 def landing():

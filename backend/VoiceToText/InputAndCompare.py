@@ -84,7 +84,7 @@ def GetUserInput(trueLine):             #be sure this file is download as input.
     if wordsInTrue != wordsInResponse:
         print("Did you say all the words?")
 
-
+    return percentage
 
 
 
