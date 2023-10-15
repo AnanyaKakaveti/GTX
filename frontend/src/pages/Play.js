@@ -2,6 +2,13 @@ import { Link } from 'react-router-dom';
 import {useState, useEffect, useRef} from 'react';
 import raw from '../data/suerte.txt';
 import axios from 'axios';
+import YouTubePlayer from "../YouTubePlayer";
+
+const presetPoints = [
+    { start: 10, end: 20 },
+    { start: 30, end: 40 },
+    // Add more preset points as needed
+  ];
 
 const Play = () => { 
 
@@ -70,6 +77,7 @@ const Play = () => {
                 
             </Link>
         </div>
+            <YouTubePlayer videoId='a8Rwz6zBJSE' presetPoints={presetPoints} /> 
             <div className="lyric">{lyric}</div>
             <div className="lyric">--------------------</div>
             <div className="lyric">{lyricE}</div>
