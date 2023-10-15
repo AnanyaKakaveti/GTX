@@ -88,17 +88,14 @@ const Play = () => {
             setGrade("Great job! You did pretty good!");
         }
         else if (response >= 40 && response < 75) {
-            setGrade("Nice going! Keep practicing to get better!");
+            setGrade("Nice work! Keep practicing to get even better!");
         }
-        else if (response < 40) {
+        else if (response < 40 && !start) {
             setGrade("Your pronunciation was a bit off. Try again!");
         }
-        else {
-            setGrade("didn't work");
-        }
-
+        
         if (response >= 40) {
-            setContinueDisabled(true);
+            setContinueDisabled(false);
         }
     }
 
