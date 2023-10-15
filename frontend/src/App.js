@@ -19,7 +19,6 @@ function App() {
       <div className="gradient-background">
         <BrowserRouter>
         {/* <Nav/> */}
-        
           <Routes>
               <Route path="/" element={<Home/>} />
               <Route path="/play" element={<Play/>} />

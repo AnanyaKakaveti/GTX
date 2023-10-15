@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import {useState, useEffect, useRef} from 'react';
 import raw from '../data/suerteSpanish.txt';
+import raw2 from '../data/suerteEnglish.txt';
 import axios from 'axios';
 import YouTubePlayer from "../YouTubePlayer";
 
@@ -13,6 +14,7 @@ const presetPoints = [
 const Play = () => { 
 
     const [allLyrics, setAllLyrics] = useState("");
+    const [allLyricsE, setAllLyricsE] = useState("");
     const [lyric, setLyric] = useState("Letras en Español");
     const [lyricE, setLyricE] = useState("Lyrics in English");
     // const counter = useRef(0);
@@ -29,12 +31,21 @@ const Play = () => {
                 // changeLyric();
                 // console.log("Lyrics: ", allLyrics);
         });
+        fetch(raw2)
+            .then(r => r.text())
+            .then(text => {
+                console.log('text decoded:', text);
+                setAllLyricsE(text);
+                // changeLyric();
+                // console.log("Lyrics: ", allLyrics);
+        });
     }, [])
 
     async function changeLyric() {
         setGrade("Record yourself to see your grade!");
         incrementCounter();
         setLyric(allLyrics.split('\n')[counter] + "\n" + allLyrics.split('\n')[counter + 1]);
+        setLyricE(allLyricsE.split('\n')[counter] + "\n" + allLyricsE.split('\n')[counter + 1]);
         incrementCounter();
         console.log(response);
     }
@@ -95,8 +106,9 @@ const Play = () => {
         
         <div className="center">
             Play The Song!
-        </div>
             <YouTubePlayer videoId='a8Rwz6zBJSE' presetPoints={presetPoints} /> 
+        </div>
+            
 
             <div className="lyric">
                 <div>{lyric}</div>
